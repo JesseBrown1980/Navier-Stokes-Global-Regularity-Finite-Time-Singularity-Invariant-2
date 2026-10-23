@@ -1,0 +1,18 @@
+[package]
+name = "navier-stokes-invariant-2"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.81"
+description = "Exact all-time invariant of the unchanged 27-mode ternary shell update, with its scope stated"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "verify"
+path = "src/bin/verify.rs"
+
+[dependencies]
+navier-stokes-regularity-spectral = { path = "vendor/navier" }

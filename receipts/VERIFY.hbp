@@ -1,0 +1,11 @@
+VERIFYHDR|crate=navier-stokes-invariant-2|upstream=5147e98b7539b079c3af23b6ea1fda5ce78bc89f|canonical=c0dfee6da17a4811964ebb4b9261d854075deac1|P=1000081|K=27|arithmetic=integer_only|float_used=0|json=0
+DRIFT|D=883973|definition=sum_n_9^n_mod_P|recomputed=883973|nonzero=1|pass=1|json=0
+STEPFORM|claim=step(u)=u+NL(u)-nu*9^n_mod_P|states=200000|mismatches=0|pass=1|json=0
+ORBIT|name=upstream_energy_test|nu=1|steps=1000081|q0=749916|q_end=749916|distinct_q=1000081|first_violation=0|pass=1|json=0
+ORBIT|name=upstream_enstrophy_test|nu=3|steps=1000081|q0=437500|q_end=437500|distinct_q=1000081|first_violation=0|pass=1|json=0
+ORBIT|name=zero_state_nu1|nu=1|steps=1000081|q0=0|q_end=0|distinct_q=1000081|first_violation=0|pass=1|json=0
+ORBIT|name=room_stub_0x9E3779B97F4A7C15|nu=1|steps=1000081|q0=562805|q_end=562805|distinct_q=1000081|first_violation=0|pass=1|json=0
+ORBIT|name=splitmix_state_nu_raw|nu=3261752180766646013|steps=1000081|q0=527109|q_end=527109|distinct_q=1000081|first_violation=0|pass=1|json=0
+ORBIT|name=inviscid_control|nu=0|steps=1000081|q0=749916|q_end=749916|distinct_q=1|first_violation=0|pass=1|json=0
+SCOPE|theorem=exact_all_time_affine_drift_of_shell_total|conserved=Q+t*nu*D|not_claimed=quadratic_energy_conservation,real_norm_bound,continuum_limit,clay_global_regularity|json=0
+RESULT|pass=1|json=0
