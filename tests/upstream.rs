@@ -96,20 +96,46 @@ fn spherical_ntt_prism_round_trip_is_exact() {
 
 #[test]
 fn host8_rooms_massive_sweep_satisfies_all_invariants() {
-    let sector_path = Path::new("D:/ASOLARIA-HOST8-ROOMS-100G/sector-000.rooms");
+    let candidate_dirs = [
+        std::env::var("ASOLARIA_ROOMS").unwrap_or_default(),
+        "D:/ASOLARIA-HOST8-ROOMS-300G".to_string(),
+        "D:/ASOLARIA-HOST8-ROOMS-100G".to_string(),
+    ];
+
     let mut stubs = Vec::new();
 
-    if sector_path.exists() {
-        if let Ok(file) = File::open(sector_path) {
-            let mut reader = BufReader::with_capacity(1024 * 1024, file);
-            let mut buf = [0u8; 8 * 1000];
-            if reader.read_exact(&mut buf).is_ok() {
-                for chunk in buf.chunks_exact(8) {
-                    let mut b = [0u8; 8];
-                    b.copy_from_slice(chunk);
-                    stubs.push(u64::from_le_bytes(b));
+    // Check candidate room directories across sectors (0, ground zero 187, positive pole 374)
+    for root in &candidate_dirs {
+        if root.is_empty() || !Path::new(root).is_dir() {
+            continue;
+        }
+
+        let test_sectors = [
+            format!("{root}/sector-000.rooms"),
+            format!("{root}/sector-187.rooms"),
+            format!("{root}/sector-374.rooms"),
+            format!("{root}/sector-062.rooms"), // 100G ground sector if present
+        ];
+
+        for sp in &test_sectors {
+            let path = Path::new(sp);
+            if path.exists() {
+                if let Ok(file) = File::open(path) {
+                    let mut reader = BufReader::with_capacity(1024 * 1024, file);
+                    let mut buf = [0u8; 8 * 1000];
+                    if reader.read_exact(&mut buf).is_ok() {
+                        for chunk in buf.chunks_exact(8) {
+                            let mut b = [0u8; 8];
+                            b.copy_from_slice(chunk);
+                            stubs.push(u64::from_le_bytes(b));
+                        }
+                    }
                 }
             }
+        }
+
+        if !stubs.is_empty() {
+            break;
         }
     }
 

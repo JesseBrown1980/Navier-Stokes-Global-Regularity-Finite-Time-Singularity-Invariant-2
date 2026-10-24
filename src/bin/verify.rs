@@ -91,6 +91,9 @@ fn main() -> ExitCode {
         Orbit { name: "upstream_enstrophy_test", u0: ShellModel27::new(250_000, 3).u, nu: 3 },
         Orbit { name: "zero_state_nu1", u0: [0u64; K], nu: 1 },
         Orbit { name: "room_stub_0x9E3779B97F4A7C15", u0: room_state(0x9E37_79B9_7F4A_7C15), nu: 1 },
+        Orbit { name: "ground_room_300g_0x259D7863C53BAE36", u0: room_state(0x259D_7863_C53B_AE36), nu: 1 },
+        Orbit { name: "neg_pole_300g_0x56F4EE189BA889DD", u0: room_state(0x56F4_EE18_9BA8_89DD), nu: 2 },
+        Orbit { name: "pos_pole_300g_0x4AB3CA1CBD74C442", u0: room_state(0x4AB3_CA1C_BD74_C442), nu: 3 },
         Orbit { name: "splitmix_state_nu_raw", u0: rng.state(), nu: rng.next_u64() },
         Orbit { name: "inviscid_control", u0: ShellModel27::new(999_999, 0).u, nu: 0 },
     ];

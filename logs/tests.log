@@ -1,57 +1,59 @@
-    Finished `release` profile [optimized] target(s) in 0.22s
-     Running unittests src/lib.rs (target/release/deps/navier_stokes_invariant_2-aab82458b28973ff)
+    Finished `release` profile [optimized] target(s) in 0.11s
+     Running unittests src/lib.rs (Users\acer\navier-stokes-invariant-2-20261023\target\release\deps\navier_stokes_invariant_2-d895663a162607e9.exe)
 
 running 11 tests
-test canonical_tribit::tests::all_three_zeros_have_magnitude_zero ... ok
 test canonical_tribit::tests::dc_cannot_reach_the_crossings ... ok
-test canonical_tribit::tests::free_registers_are_zero_and_one ... ok
+test canonical_tribit::tests::all_three_zeros_have_magnitude_zero ... ok
 test canonical_tribit::tests::eighty_is_the_exact_ceiling ... ok
-test canonical_tribit::tests::pump_shell_grows_as_log3 ... ok
 test canonical_tribit::tests::the_prism_closes_on_zero ... ok
 test canonical_tribit::tests::transfers_back_and_forth_exactly ... ok
+test canonical_tribit::tests::free_registers_are_zero_and_one ... ok
 test canonical_tribit::tests::trianti_is_order_three_and_distinct_from_its_inverse ... ok
+test canonical_tribit::tests::pump_shell_grows_as_log3 ... ok
 test canonical_tribit::tests::trit_word_round_trips ... ok
 test canonical_tribit::tests::w_really_is_a_primitive_27th_root ... ok
 test canonical_tribit::tests::zero_states_equals_what_zero_at_can_reach ... ok
 
-test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running unittests src/bin/verify.rs (target/release/deps/verify-8c8ccec406900fca)
+     Running unittests src/bin/verify.rs (Users\acer\navier-stokes-invariant-2-20261023\target\release\deps\verify-cbefab7622480d16.exe)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/contract.rs (target/release/deps/contract-2fc77a33bb286dc1)
+     Running tests\contract.rs (Users\acer\navier-stokes-invariant-2-20261023\target\release\deps\contract-fc320a1023b10e80.exe)
 
-running 13 tests
+running 15 tests
 test drift_constant_matches_its_definition_and_is_nonzero ... ok
 test drift_has_exact_period_p_in_time ... ok
 test scope_linear_conservation_is_not_quadratic_energy_cancellation ... ok
 test scope_modular_enstrophy_bound_is_a_range_fact ... ok
+test physical_300g_disk_store_and_phone_dock_read_check ... ok
 test scope_readme_theorem_1_formula_does_not_sum_to_zero ... ok
 test scope_zero_state_is_not_fixed_under_positive_viscosity ... ok
 test one_step_changes_q_by_exactly_minus_nu_d ... ok
 test q_is_dc_lane_of_state_and_transfer_dc_is_zero_canonical_prism ... ok
 test upstream_transfer_equals_closed_form_and_sums_to_zero ... ok
+test host8_300g_ground_zero_and_boundary_poles_satisfy_all_time_invariant ... ok
 test invariant_holds_along_upstream_test_orbits ... ok
 test inviscid_case_conserves_q_exactly ... ok
 test upstream_step_equals_closed_form_for_every_tested_nu ... ok
 test invariant_holds_along_random_and_room_orbits ... ok
 
-test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
 
-     Running tests/upstream.rs (target/release/deps/upstream-a7b05f90b5454a6d)
+     Running tests\upstream.rs (Users\acer\navier-stokes-invariant-2-20261023\target\release\deps\upstream-584b06b62291c950.exe)
 
 running 8 tests
 test arbitrary_trit_perturbations_preserve_dc_center_invariant ... ok
 test spherical_ntt_prism_round_trip_is_exact ... ok
-test triad_non_linear_convective_flux_sums_identically_to_zero ... ok
 test uncomputed_center_invariant_conserved_under_convective_cascade ... ok
+test triad_non_linear_convective_flux_sums_identically_to_zero ... ok
 test viscous_dissipation_dominates_at_high_3adic_rungs ... ok
 test enstrophy_singularity_is_topologically_prohibited ... ok
 test twenty_seven_mode_shell_model_energy_strictly_bounded_over_thousands_of_steps ... ok
 test host8_rooms_massive_sweep_satisfies_all_invariants ... ok
 
-test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
 

@@ -5,6 +5,9 @@ ORBIT|name=upstream_energy_test|nu=1|steps=1000081|q0=749916|q_end=749916|distin
 ORBIT|name=upstream_enstrophy_test|nu=3|steps=1000081|q0=437500|q_end=437500|distinct_q=1000081|first_violation=0|pass=1|json=0
 ORBIT|name=zero_state_nu1|nu=1|steps=1000081|q0=0|q_end=0|distinct_q=1000081|first_violation=0|pass=1|json=0
 ORBIT|name=room_stub_0x9E3779B97F4A7C15|nu=1|steps=1000081|q0=562805|q_end=562805|distinct_q=1000081|first_violation=0|pass=1|json=0
+ORBIT|name=ground_room_300g_0x259D7863C53BAE36|nu=1|steps=1000081|q0=463904|q_end=463904|distinct_q=1000081|first_violation=0|pass=1|json=0
+ORBIT|name=neg_pole_300g_0x56F4EE189BA889DD|nu=2|steps=1000081|q0=725744|q_end=725744|distinct_q=1000081|first_violation=0|pass=1|json=0
+ORBIT|name=pos_pole_300g_0x4AB3CA1CBD74C442|nu=3|steps=1000081|q0=828264|q_end=828264|distinct_q=1000081|first_violation=0|pass=1|json=0
 ORBIT|name=splitmix_state_nu_raw|nu=3261752180766646013|steps=1000081|q0=527109|q_end=527109|distinct_q=1000081|first_violation=0|pass=1|json=0
 ORBIT|name=inviscid_control|nu=0|steps=1000081|q0=749916|q_end=749916|distinct_q=1|first_violation=0|pass=1|json=0
 SCOPE|theorem=exact_all_time_affine_drift_of_shell_total|conserved=Q+t*nu*D|not_claimed=quadratic_energy_conservation,real_norm_bound,continuum_limit,clay_global_regularity|json=0

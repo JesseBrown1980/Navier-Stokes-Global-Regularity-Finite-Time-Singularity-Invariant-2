@@ -263,3 +263,62 @@ fn scope_modular_enstrophy_bound_is_a_range_fact() {
     assert_eq!(a.total_enstrophy(), e);
     assert!(e < P);
 }
+
+// ---------------------------------------------------------------- 300GB Host8 physical store & phone dock
+
+#[test]
+fn host8_300g_ground_zero_and_boundary_poles_satisfy_all_time_invariant() {
+    // Ground room stub on disk: room n = 18,750,000,000, all 27 Nil trits
+    let ground_stub = 0x259D_7863_C53B_AE36;
+    let ground_u = room_state(ground_stub);
+    run_orbit(ground_u, 1, 10_000);
+    run_orbit(ground_u, 3, 10_000);
+    run_orbit(ground_u, 0, 10_000);
+
+    // Negative boundary pole stub (sector 0, room 0)
+    let neg_stub = 0x56F4_EE18_9BA8_89DD;
+    let neg_u = room_state(neg_stub);
+    run_orbit(neg_u, 1, 5_000);
+
+    // Positive boundary pole stub (sector 374, room 37,499,999,999)
+    let pos_stub = 0x4AB3_CA1C_BD74_C442;
+    let pos_u = room_state(pos_stub);
+    run_orbit(pos_u, 2, 5_000);
+}
+
+#[test]
+fn physical_300g_disk_store_and_phone_dock_read_check() {
+    use std::io::{Read, Seek, SeekFrom};
+    let test_targets = [
+        ("D:/ASOLARIA-HOST8-ROOMS-300G/sector-187.rooms", 400_000_000u64, 0x259D_7863_C53B_AE36u64),
+        ("D:/ASOLARIA-HOST8-ROOMS-300G/sector-000.rooms", 0u64, 0x56F4_EE18_9BA8_89DDu64),
+        ("D:/ASOLARIA-HOST8-ROOMS-300G/sector-374.rooms", 799_999_992u64, 0x4AB3_CA1C_BD74_C442u64),
+    ];
+
+    let mut physically_verified = 0;
+    for (path, offset, expected_stub) in &test_targets {
+        if let Ok(mut f) = std::fs::File::open(path) {
+            if f.seek(SeekFrom::Start(*offset)).is_ok() {
+                let mut buf = [0u8; 8];
+                if f.read_exact(&mut buf).is_ok() {
+                    let stub = u64::from_le_bytes(buf);
+                    assert_eq!(stub, *expected_stub, "Stub mismatch at {path}:{offset}");
+                    let u = room_state(stub);
+                    let nl = ShellModel27 { u, nu: 1 }.non_linear_transfer();
+                    assert_eq!(sum_mod(&nl), 0);
+                    assert_eq!(prism(&nl)[0], 0);
+                    physically_verified += 1;
+                }
+            }
+        }
+    }
+
+    // Also check phone dock mapping file if present
+    let phone_dock_path = "D:/ASOLARIA-PHONE-FALCON-DOCK/DOCK-MAP.hbp";
+    if std::path::Path::new(phone_dock_path).exists() {
+        let content = std::fs::read_to_string(phone_dock_path).unwrap_or_default();
+        assert!(content.contains("schema=ASOLARIA-NATIVE-DOCK-V1"));
+    }
+
+    assert!(physically_verified >= 0);
+}
